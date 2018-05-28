@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fefefe;
+  --gray: #414141;
+  --black: #232323;
+  --green1: #00ffe6;
+  --green2: #018f79;
+  --green3: #027c6d;
+  --green4: #026354;
+  --green5: #003f36;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: var(--gray);
+}
