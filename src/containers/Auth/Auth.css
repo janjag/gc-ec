@@ -40,7 +40,7 @@
     cursor: pointer;
     transition: color .2s ease-in-out;
     overflow: visible;
-    -webkit-appearance: none;
+    appearance: none;
 }
 .Auth_button::after {
     content: '';
