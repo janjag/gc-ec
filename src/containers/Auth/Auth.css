@@ -1,0 +1,75 @@
+.Auth_wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: 
+        repeating-linear-gradient(
+            135deg,
+            var(--green3),
+            var(--green3) .2em,
+            transparent .2em,
+            transparent 2.8em
+        ),
+        linear-gradient(
+            to bottom,
+            var(--green3),
+            var(--black)
+        );
+}
+
+.Auth_button_wrapper {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Auth_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    font-size: calc(1.6rem + 2.2vmax);
+    font-weight: 700;
+    color: var(--green3);
+    fill: var(--green3);
+    cursor: pointer;
+    transition: color .2s ease-in-out;
+    overflow: visible;
+    -webkit-appearance: none;
+}
+.Auth_button::after {
+    content: '';
+    background-color: var(--white);
+    border: .2rem solid var(--green3);
+    display: block;
+    width: 6em;
+    height: 6em;
+    transform: translate(-50%, -50%) rotate(45deg);
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transition: all .2s ease-in-out;
+}
+.Auth_icon {
+    flex-grow: 1;
+    display: block;
+    min-height: calc(2rem + 2.2vmax);
+    transition: fill .2s ease-in-out;
+}
+
+.Auth_button:hover {
+    color: var(--green1);
+    fill: var(--green1);
+}
+
+.Auth_info {
+    color: var(--white);
+    font-size: 1.6rem;
+    padding: 1em;
+}
