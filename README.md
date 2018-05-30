@@ -13,7 +13,7 @@ Assumptions:
 ---
 ### To Do
 
-- Auth based routing
+- ~~Auth based routing~~
 - Display list of calendars with basic informations
 - Add configuration to calendars
 - Display list of events for selected calendar

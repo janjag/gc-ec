@@ -35,7 +35,6 @@ class App extends Component {
   }
 
   updateSigninStatus = (isSignedIn) => {
-    console.log(isSignedIn);
       if(isSignedIn) {
           this.props.userLogIn();
           localStorage.setItem('signinStatus', true);
@@ -43,8 +42,6 @@ class App extends Component {
           this.props.userLogOut();
           localStorage.setItem('signinStatus', false);
       }
-
-      console.log(this.props.isAuth);
   }
 
   render() {

@@ -17,6 +17,7 @@ class Auth extends Component {
             <div className="Auth_wrapper">
                 <p className="Auth_info">Log in to your Google account to start using app.</p>
                 <div className="Auth_button_wrapper">
+                    <h1 className="App_name">Google Calendar Event Counter</h1>
                     <button 
                         className="Auth_button"
                         onClick={this.handleSignInClick}
