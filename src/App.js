@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Aux from './hoc/Aux';
 import Auth from './containers/Auth/Auth';
 import Calendars from './containers/Calendars/Calendars';
+import About from './components/About/About';
 
 class App extends Component {
 
@@ -47,6 +48,7 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
+        <Route path="/about" component={About} />
         <Route path="/login" component={Auth} />
         <Redirect to='/login' />
       </Switch>
@@ -54,6 +56,7 @@ class App extends Component {
     if(this.props.isAuth) {
       routes = (
         <Switch>
+          <Route path="/about" component={About} />
           <Route path="/" exact component={Calendars} />
           <Redirect to='/' />
         </Switch>

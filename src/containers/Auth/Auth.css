@@ -19,6 +19,12 @@
         );
 }
 
+.Auth_info {
+    color: var(--white);
+    font-size: 1.6rem;
+    padding: 1em;
+}
+
 .Auth_button_wrapper {
     height: 100%;
     flex-grow: 1;
@@ -32,7 +38,7 @@
     color: var(--white);
     font-size: calc(1.6rem + 2.2vmax);
     font-weight: 300;
-    margin: -2em 0 3em;
+    margin: -2em 0 1em;
     padding: 0 1em;
 }
 
@@ -45,12 +51,15 @@
     z-index: 2;
     font-size: calc(1.6rem + 2.2vmax);
     font-weight: 700;
+    border: 0;
+    background-color: transparent;
     color: var(--green3);
     fill: var(--green3);
     cursor: pointer;
     transition: color .2s ease-in-out;
     overflow: visible;
     appearance: none;
+    padding: 2em 0;
 }
 .Auth_button::after {
     content: '';
@@ -78,8 +87,27 @@
     fill: var(--green1);
 }
 
-.Auth_info {
-    color: var(--white);
-    font-size: 1.6rem;
-    padding: 1em;
+.About-link {
+    color: var(--green3);
+    font-size: 1.4rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    align-self: flex-end;
+    margin: 1em 2em;
+    text-decoration: none;
+}
+.About-link::after {
+    content: '';
+    background-color: var(--white);
+    border: .2rem solid var(--green3);
+    display: block;
+    width: 2em;
+    height: 2em;
+    transform: translate(-50%, -50%) rotate(45deg);
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transition: all .2s ease-in-out;
 }

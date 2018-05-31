@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Auth.css';
 import { User } from './../../components/UI/Icons/Icons';
@@ -25,6 +26,7 @@ class Auth extends Component {
                         <User name="Auth_icon" />
                         Log In
                     </button>
+                    <Link to="/about" className="About-link">i</Link>
                 </div>
             </div>
         );

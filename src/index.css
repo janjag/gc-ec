@@ -29,3 +29,46 @@ body {
   background-color: var(--white);
   color: var(--gray);
 }
+
+.Content_wrapper {
+  min-height: 100vh;
+  padding: 5vh 2rem;
+  color: var(--white);
+  background: 
+      linear-gradient(
+          to bottom,
+          var(--green3),
+          var(--black)
+      );
+}
+.Content_wrapper p {
+  line-height: 1.5;
+  font-weight: 300;
+  font-size: 1.6rem;
+  text-align: justify;
+}
+
+.Content_wrapper code {
+  color: var(--green1);
+  font-family: monospace;
+  letter-spacing: .1em;
+  font-size: 1.2em;
+}
+
+.Content_wrapper hr {
+  margin: 2rem 0;
+  border-color: var(--green1);
+}
+
+.Basic_button {
+  display: block;
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: var(--white);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  margin: 1em auto;
+}

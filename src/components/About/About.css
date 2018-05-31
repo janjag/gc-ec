@@ -1,0 +1,29 @@
+.About_title {
+    font-size: calc(1.6rem + 1.2vmax);
+    margin-bottom: .3em;
+}
+
+.About_title span {
+    font-weight: 300;
+}
+
+.App_assumptions {
+    font-size: calc(1.6rem + .8vmax);
+    margin-bottom: .3em;
+}
+
+.App_assumptions_list {
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+.App_assumptions_list li {
+    line-height: 1.5;
+    margin-bottom: .3em
+}
+.App_assumptions_list li::before {
+    content: '-';
+    color: var(--green1);
+    font-weight: 700;
+    margin-right: 0.3em;
+}
