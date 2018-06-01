@@ -21,23 +21,73 @@ class Calendars extends Component {
                 minAccessRole: 'writer'
             }).then(response => {
                 let updatedResponse = response.result.items;
-
-                console.log(updatedResponse);
+                let transformedResponse = [];
                 updatedResponse.map( element => {
+                    const now = new Date();
+                    const firstDayPrevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+                    const prevMonthLastDate = new Date(now.getFullYear(), now.getMonth() -1, 31);
                     let newElement = {
                         ...element,
                         events: [],
-                        hourlyRate: null,
-                        tax: null
+                        hourlyRate: 10,
+                        tax: 0.1,
+                        computedCount: 0,
+                        computedCost: 0,
+                        computedTax: 0,
+                        computedTotal: 0,
+                        hidden: false
                     }
+                    window.gapi.client.calendar.events.list({
+                        calendarId: element.id,
+                        timeMin: firstDayPrevMonth.toISOString(),
+                        timeMax: prevMonthLastDate.toISOString(),
+                        maxResults: 2500,
+                        singleEvents: true,
+                        orderBy: 'startTime',
+                      }).then(response => {
+                        let eventList = response.result.items;
+                        let total = 0;
+                        let cost = 0;
+                        let computedTax = 0;
+                        let tasks = [];
+                        if (eventList.length) {
+                            eventList.map((event, i) => {
+                                // if event has specified color - it means that it overlaps with other event(s) and should be skipped
+                                if(event.colorId) {
+                                    return;
+                                }
+                                    const start = event.start.dateTime || event.start.date;
+                                    const eventLength = Math.abs(new Date(event.end.dateTime).getTime() - new Date(event.start.dateTime).getTime()) / 60000 || 0;
+                                    total += eventLength;
+                                
+                                    let item = {
+                                        name: event.summary,
+                                        length: eventLength
+                                    }
+                                    tasks.push(item);
+                            });
+                            cost = (total / 60) * newElement.hourlyRate;
+                            computedTax = cost * newElement.tax;
 
-                    console.log(newElement);
-                    return newElement;
-                });
+                            newElement = {
+                                ...newElement,
+                                events: eventList,
+                                computedCount: eventList.length,
+                                computedCost: cost,
+                                computedTax: computedTax,
+                                computedTotal: total
+                            }
 
-                this.setState( {
-                    calendarsList: updatedResponse,
-                    loading: false
+                            console.log(newElement);
+                            transformedResponse.push(newElement);
+                            return newElement;
+                        }
+                    }).then( () => {
+                        this.setState( {
+                            calendarsList: transformedResponse,
+                            loading: false
+                        });
+                    });
                 });
             }); 
         }
@@ -47,12 +97,17 @@ class Calendars extends Component {
         let calendarsList = <Loader />;
 
         if ( !this.props.loading ) {
+            console.log(this.state.calendarsList);
             calendarsList = this.state.calendarsList.map( calendar => (
                 <Calendar 
                     key={calendar.id}
                     id={calendar.id}
                     name={calendar.summary}
                     bgColor={calendar.backgroundColor}
+                    count={calendar.computedCount}
+                    cost={calendar.computedCost}
+                    tax={calendar.computedTax}
+                    total={calendar.computedTotal}
                     />
             ) )
         }

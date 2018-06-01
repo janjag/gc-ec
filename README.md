@@ -14,7 +14,7 @@ Assumptions:
 ### To Do
 
 - ~~Auth based routing~~
-- Display list of calendars with basic informations
+- ~~Display list of calendars with basic informations~~
 - Add configuration to calendars
 - Display list of events for selected calendar
 - Add option to show events form selected dates range
