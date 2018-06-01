@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
+import * as config from './config';
 
 import Aux from './hoc/Aux';
 import Auth from './containers/Auth/Auth';
@@ -22,10 +23,10 @@ class App extends Component {
       // Initialize the client with API key and People API, and initialize OAuth with an
       // OAuth 2.0 client ID and scopes (space delimited string) to request access.
       window.gapi.client.init({
-          apiKey: 'AIzaSyBT8d2rQ57RHWUMY2WWtiG2okgh_i7FyLM',
-          clientId: '428792196990-oh8nmk8adiofg8nkefsbme8c23dr05dg.apps.googleusercontent.com',
-          discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
-          scope: "https://www.googleapis.com/auth/calendar.readonly"
+          apiKey: config.API_KEY,
+          clientId: config.CLIENT_ID,
+          discoveryDocs: config.DISCOVERY_DOCS,
+          scope: config.SCOPE
       }).then( () => {
           // Listen for sign-in state changes.
           window.gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);

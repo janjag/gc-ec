@@ -12,11 +12,8 @@
   --white: #fefefe;
   --gray: #414141;
   --black: #232323;
-  --green1: #00ffe6;
-  --green2: #018f79;
-  --green3: #027c6d;
-  --green4: #026354;
-  --green5: #003f36;
+  --color1: #00ffe6;
+  --color2: #027c6d;
 }
 
 html {
@@ -30,6 +27,15 @@ body {
   color: var(--gray);
 }
 
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
 .Content_wrapper {
   min-height: 100vh;
   padding: 5vh 2rem;
@@ -37,7 +43,7 @@ body {
   background: 
       linear-gradient(
           to bottom,
-          var(--green3),
+          var(--color2),
           var(--black)
       );
 }
@@ -49,7 +55,7 @@ body {
 }
 
 .Content_wrapper code {
-  color: var(--green1);
+  color: var(--color1);
   font-family: monospace;
   letter-spacing: .1em;
   font-size: 1.2em;
@@ -57,7 +63,8 @@ body {
 
 .Content_wrapper hr {
   margin: 2rem 0;
-  border-color: var(--green1);
+  border-color: var(--color1);
+  position: relative;
 }
 
 .Basic_button {

@@ -7,14 +7,14 @@
     background: 
         repeating-linear-gradient(
             135deg,
-            var(--green3),
-            var(--green3) .2em,
+            var(--color2),
+            var(--color2) .2em,
             transparent .2em,
             transparent 1.6em
         ),
         linear-gradient(
             to bottom,
-            var(--green3),
+            var(--color2),
             var(--black)
         );
 }
@@ -47,24 +47,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    z-index: 2;
     font-size: calc(1.6rem + 2.2vmax);
     font-weight: 700;
-    border: 0;
-    background-color: transparent;
-    color: var(--green3);
-    fill: var(--green3);
-    cursor: pointer;
+    color: var(--color2);
+    fill: var(--color2);
     transition: color .2s ease-in-out;
-    overflow: visible;
-    appearance: none;
     padding: 2em 0;
 }
 .Auth_button::after {
     content: '';
     background-color: var(--white);
-    border: .2rem solid var(--green3);
+    border: .2rem solid var(--color2);
     display: block;
     width: 6em;
     height: 6em;
@@ -83,12 +76,12 @@
 }
 
 .Auth_button:hover {
-    color: var(--green1);
-    fill: var(--green1);
+    color: var(--color1);
+    fill: var(--color1);
 }
 
 .About-link {
-    color: var(--green3);
+    color: var(--color2);
     font-size: 1.4rem;
     font-weight: 700;
     position: relative;
@@ -100,7 +93,7 @@
 .About-link::after {
     content: '';
     background-color: var(--white);
-    border: .2rem solid var(--green3);
+    border: .2rem solid var(--color2);
     display: block;
     width: 2em;
     height: 2em;

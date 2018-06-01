@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 
-class Calendar extends Component {
+class CalendarDetails extends Component {
     render () {
         return (
             <h1>Calendar details</h1>
@@ -8,4 +8,4 @@ class Calendar extends Component {
     }
 } 
 
-export default Calendar;
+export default CalendarDetails;

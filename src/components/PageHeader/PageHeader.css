@@ -1,0 +1,72 @@
+.Page_header {
+    display: flex;
+    border-bottom: .1rem solid var(--color1);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.Page_title {
+    font-size: calc(1.6rem + 1.2vmax);
+    margin-bottom: .3em;
+}
+
+
+.Logout_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color2);
+    fill: var(--color2);
+    transition: color .2s ease-in-out;
+    padding: 2em 0;
+    margin: -1.5em 0 -1em auto;
+}
+.Logout_button::after {
+    content: '';
+    background-color: var(--white);
+    border: .2rem solid var(--color1);
+    display: block;
+    width: 4em;
+    height: 4em;
+    transform: translate(-50%, -50%) rotate(45deg);
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transition: all .2s ease-in-out;
+}
+
+.Settings_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 1.4rem;
+    width: 1.4rem;
+    color: var(--color2);
+    fill: var(--color2);
+    transition: color .2s ease-in-out;
+    margin: -1em 0 0 1em;
+}
+.Settings_button::after {
+    content: '';
+    background-color: var(--white);
+    border: .2rem solid var(--color1);
+    display: block;
+    width: 2.2em;
+    height: 2.2em;
+    transform: translate(-50%, -50%) rotate(45deg);
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transition: all .2s ease-in-out;
+}
+.Settings_button svg {
+    display: block;
+    height: 1.4rem;
+    width: 1.4rem;
+}
