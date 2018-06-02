@@ -1,15 +1,18 @@
+import * as actionType from '../actions/actions';
+
 const initialState = {
-    signedIn: false
+    signedIn: false,
+    loading: true
 }
 
-const reducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
     switch ( action.type ) {
-        case 'LOG_IN':
+        case actionType.LOG_IN:
             return {
                 ...state,
                 signedIn: true
             };
-        case 'LOG_OUT':
+        case actionType.LOG_OUT:
             return {
                 ...state,
                 signedIn: false
@@ -18,4 +21,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default appReducer;

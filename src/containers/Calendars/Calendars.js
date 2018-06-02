@@ -122,7 +122,7 @@ class Calendars extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.signedIn
+    isAuth: state.app.signedIn
   };
 };
 

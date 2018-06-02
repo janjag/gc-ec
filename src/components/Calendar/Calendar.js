@@ -8,16 +8,17 @@ const Calendar = ( props ) => {
     const calendarStyle = {
         color: props.bgColor
     }
+    const newId = props.id.split('@');
 
     return (
         <div className="Calendar_box">
             <div className="Calendar_box_header">
-                <b>Calendar:</b> <span style={calendarStyle}>{props.name}</span>
-                <button className="Edit-button" id={props.id}><Edit /></button>
+                <i>Calendar:</i> <span style={calendarStyle}>{props.name}</span>
+                <button className="Edit-button" id={newId[0]}><Edit /></button>
             </div>
-            <p><b>Events:</b> {props.count}</p>
-            <p><b>Total:</b> {props.total}min / {props.total / 60}h</p>
-            <p>{props.cost}PLN brutto / Tax: {props.tax}PLN <br /> {props.cost - props.tax} PLN netto</p>
+            <p><i>Events:</i> {props.count}</p>
+            <p><i>Total:</i> <b>{props.total / 60} h</b> / {props.total} min</p>
+            <p><b>{props.cost} PLN</b> brutto / Tax: {props.tax} PLN <br /> <b>{props.cost - props.tax} PLN</b> netto</p>
         </div>
     );
 }

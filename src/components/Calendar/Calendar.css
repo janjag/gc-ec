@@ -8,8 +8,8 @@
     margin-bottom: .75em;
 }
 
-.Calendar_box span {
-    margin-left: .5em;
+.Calendar_box i {
+    margin-right: .5em;
 }
 
 .Calendar_box_header {

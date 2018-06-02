@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as config from './config';
+import * as actionCreators from './store/actions';
 
 import Aux from './hoc/Aux';
 import Auth from './containers/Auth/Auth';
@@ -74,14 +75,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.signedIn
+    isAuth: state.app.signedIn
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    userLogIn: () => dispatch({type: "LOG_IN"}),
-    userLogOut: () => dispatch({type: "LOG_OUT"})
+    userLogIn: () => dispatch(actionCreators.logIn()),
+    userLogOut: () => dispatch(actionCreators.logOut())
   };
 };
 
