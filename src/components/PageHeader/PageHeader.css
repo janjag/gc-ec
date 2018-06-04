@@ -10,6 +10,15 @@
     margin-bottom: .3em;
 }
 
+.Page_header .About-link {
+    font-size: 1.4rem;
+    margin: 1em 0 -0.6em -0.7em;
+}
+.Page_header .About-link::after {
+    border-color: var(--color1);
+    height: 1.75em;
+    width: 1.75em;
+}
 
 .Logout_button {
     display: flex;

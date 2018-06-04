@@ -79,28 +79,3 @@
     color: var(--color1);
     fill: var(--color1);
 }
-
-.About-link {
-    color: var(--color2);
-    font-size: 1.4rem;
-    font-weight: 700;
-    position: relative;
-    z-index: 2;
-    align-self: flex-end;
-    margin: 1em 2em;
-    text-decoration: none;
-}
-.About-link::after {
-    content: '';
-    background-color: var(--white);
-    border: .2rem solid var(--color2);
-    display: block;
-    width: 2em;
-    height: 2em;
-    transform: translate(-50%, -50%) rotate(45deg);
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transition: all .2s ease-in-out;
-}

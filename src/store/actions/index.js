@@ -1,9 +1,6 @@
 export {
     logIn,
-    logOut
-} from './appActions';
-
-export {
+    logOut,
     getCalendars,
     getEvents
-} from './calendarsActions'
+} from './actionsCreators'

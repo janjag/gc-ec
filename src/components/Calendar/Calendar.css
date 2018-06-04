@@ -1,8 +1,11 @@
 .Calendar_box {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
     background-color: var(--white);
     color: var(--color2);
     font-size: 1.4rem;
-    padding: .5em 1.5em;
+    padding: 1.5em 1em;
 }
 .Calendar_box:not(:last-of-type) {
     margin-bottom: .75em;
@@ -10,26 +13,12 @@
 
 .Calendar_box i {
     margin-right: .5em;
+    padding-right: .2em;
 }
 
-.Calendar_box_header {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding-bottom: .3em;
-    border-bottom: .1rem solid var(--gray);
-    margin-bottom: .3em;
-}
-
-.Edit-button {
-    appearance: none;
-    background-color: transparent;
-    border: 0;
+.Details_link {
+    color: var(--color2);
+    font-weight: 700;
     margin-left: auto;
-    cursor: pointer;
-}
-
-.Edit-button svg {
-    fill: var(--color2);
-    height: 1.6rem;
+    text-decoration: none;
 }

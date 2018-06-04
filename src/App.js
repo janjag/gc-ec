@@ -3,15 +3,20 @@ import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as config from './config';
 import * as actionCreators from './store/actions';
+import { setColor } from './shared/helpers';
 
 import Aux from './hoc/Aux';
 import Auth from './containers/Auth/Auth';
 import Calendars from './containers/Calendars/Calendars';
+import CalendarDetails from './containers/CalendarDetails/CalendarDetails';
 import About from './components/About/About';
 
 class App extends Component {
 
-  componentDidMount = () => this.handleClientLoad();
+  componentDidMount = () => {
+    setColor();
+    this.handleClientLoad();
+  }
 
   handleClientLoad() {
     // Loads the client library and the auth2 library together for efficiency.
@@ -58,6 +63,7 @@ class App extends Component {
     if(this.props.isAuth) {
       routes = (
         <Switch>
+          <Route path="/calendar/:id" component={CalendarDetails}/>
           <Route path="/about" component={About} />
           <Route path="/" exact component={Calendars} />
           <Redirect to='/' />
@@ -75,7 +81,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.app.signedIn
+    isAuth: state.signedIn
   };
 };
 
