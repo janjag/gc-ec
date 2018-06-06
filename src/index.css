@@ -82,6 +82,18 @@ button {
   margin: 1em auto;
 }
 
+.Show_all {
+  font-size: 1.4rem;
+  margin: -1em auto 1em;
+}
+
+.Show_all svg {
+  display: inline-block;
+  vertical-align: sub;
+  height: 1.5em;
+  fill: var(--white);
+}
+
 .About-link {
   color: var(--color2);
   font-size: 1.4rem;

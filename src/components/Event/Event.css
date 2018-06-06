@@ -1,0 +1,17 @@
+.Event_box {
+    width: 100%;
+    background-color: var(--white);
+    color: var(--black);
+    font-size: 1.4rem;
+    padding: .5em 1em;
+    border-bottom: .1em solid var(--color1);
+}
+.Event_box:not(:last-of-type) {
+    margin-bottom: .75em;
+}
+.Event_box_title {
+    border-bottom: .1rem solid var(--color2);
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: .25em;
+}

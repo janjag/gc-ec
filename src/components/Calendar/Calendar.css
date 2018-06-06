@@ -6,6 +6,7 @@
     color: var(--color2);
     font-size: 1.4rem;
     padding: 1.5em 1em;
+    border-left: .5em solid transparent;
 }
 .Calendar_box:not(:last-of-type) {
     margin-bottom: .75em;
@@ -18,7 +19,8 @@
 
 .Details_link {
     color: var(--color2);
-    font-weight: 700;
+    cursor: pointer;
+    font-weight: 300;
     margin-left: auto;
     text-decoration: none;
 }

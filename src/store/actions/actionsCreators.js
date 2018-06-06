@@ -12,6 +12,18 @@ export const logOut = () => {
     }
 }
 
+export const showAllCalendars = () => {
+    return {
+        type: actionType.SHOW_ALL_CALENDARS
+    }
+}
+
+export const hideCalendars = () => {
+    return {
+        type: actionType.HIDE_CALENDARS
+    }
+}
+
 export const saveCalendars = (calendarList) => {
     return {
         type: actionType.SAVE_CALENDARS,
@@ -30,33 +42,5 @@ export const getCalendars = () => {
             localStorage.setItem('calendars', JSON.stringify(calendars));
             dispatch(saveCalendars(calendars));
         });
-    }
-}
-
-export const getEvents = (calId, startTime, endTime) => {
-    return dispatch => {
-        const now = new Date();
-        const firstDayPrevMonth = startTime || new Date(now.getFullYear(), now.getMonth() - 1, 1);
-        const prevMonthLastDate = endTime || new Date(now.getFullYear(), now.getMonth() -1, 31);
-
-        window.gapi.client.calendar.events.list({
-            calendarId: calId,
-            timeMin: firstDayPrevMonth.toISOString(),
-            timeMax: prevMonthLastDate.toISOString(),
-            maxResults: 2500,
-            singleEvents: true,
-            orderBy: 'startTime',
-        }).then(response => {
-            let eventList = response.result.items;
-            dispatch(saveEvents(calId, eventList));
-        });
-    }
-}
-
-export const saveEvents = (id,list) => {
-    return {
-        type: actionType.SAVE_EVENTS,
-        id: id,
-        events: list
     }
 }

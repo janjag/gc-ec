@@ -1,6 +1,7 @@
 export {
     logIn,
     logOut,
-    getCalendars,
-    getEvents
+    showAllCalendars,
+    hideCalendars,
+    getCalendars
 } from './actionsCreators'

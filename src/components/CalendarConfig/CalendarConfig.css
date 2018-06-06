@@ -1,0 +1,54 @@
+.Calendar_config {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    padding-bottom: .5em;
+    border-bottom: .1rem solid var(--color1);
+    margin-bottom: 1em;
+}
+
+.Calendr_config_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.Edit_button {
+    margin: 0;
+}
+
+.Edit_button svg {
+    fill: var(--white);
+    height: 2rem;
+    width: 2rem;
+}
+
+.Calendar_config_computed {
+    font-size: 1.4rem;
+}
+
+.Config_form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.Config_field {
+    border: 0;
+    width: calc(50% - .5em);
+}
+.Config_field label {
+    display: block;
+    font-style: italic;
+    margin-bottom: .25em;
+}
+.Config_field input {
+    background-color: var(--white);
+    border: 0;
+    border-bottom: .1rem solid var(--color1);
+    color: var(--color2);
+    display: block;
+    font-size: 1.4rem;
+    font-family: 'Montserrat', sans-serif;
+    padding: .2em .5em;
+    width: 100%;
+}
