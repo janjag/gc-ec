@@ -58,7 +58,7 @@ class App extends Component {
       <Switch>
         <Route path="/about" component={asyncAbout} />
         <Route path="/login" component={Auth} />
-        <Redirect to='/login' />
+        <Redirect to="/login" />
       </Switch>
     );
     if(this.props.isAuth) {
@@ -67,7 +67,7 @@ class App extends Component {
           <Route path="/calendar/:id" component={asyncCalendarDetails}/>
           <Route path="/about" component={asyncAbout} />
           <Route path="/" exact component={asyncCalendars} />
-          <Redirect to='/' />
+          <Redirect to="/" />
         </Switch>
       );
     }

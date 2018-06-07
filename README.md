@@ -4,6 +4,8 @@
 This simple web app was build with ```create-react-app``` for practice with Google Calendar API, lerning React and to help counting total time spent on projects in previus month.
 For now it will cycle through all calendars that you have at least ```writer``` permission.
 
+Application is using ```cookies```/```localstorage``` for storing necessary informations.
+
 ---
 
 Assumptions:

@@ -22,9 +22,10 @@ class CalendarDetails extends Component {
         this.fetchEvents();
     }
 
-    fetchEvents = (tStart, tEnd) => {
+    fetchEvents = () => {
+        // tStart, tEndtEnd
         const path = window.location.pathname.split('/');
-        const localID = path[2];
+        const localID = path[path.length -1];
         const calendar = JSON.parse(localStorage.getItem('calendars')).find(item => item.id.includes(localID));
         const base = {
             id: calendar.id,
