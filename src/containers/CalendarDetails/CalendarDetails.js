@@ -1,7 +1,6 @@
 import React, { Component }  from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import PageHeader from '../../components/PageHeader/PageHeader';
 import CalendarConfig from '../../components/CalendarConfig/CalendarConfig';
 import Loader from '../../components/UI/Loader/Loader';
 import Event from '../../components/Event/Event';
@@ -10,9 +9,10 @@ import { updateObject } from '../../shared/helpers';
 class CalendarDetails extends Component {
     state = {
         id: null,
+        name: null,
         events: [],
-        tax: 0.1,
-        hRate: 10,
+        tax: 0,
+        hRate: 0,
         hidden: false,
         total: null,
         editable: false
@@ -26,12 +26,16 @@ class CalendarDetails extends Component {
         const path = window.location.pathname.split('/');
         const localID = path[2];
         const calendar = JSON.parse(localStorage.getItem('calendars')).find(item => item.id.includes(localID));
+        const base = {
+            id: calendar.id,
+            name: calendar.summary
+        };
 
         this.getEvents(calendar.id, null, null);
-        this.setState({id: calendar.id});
+        this.setState(updateObject(this.state, base));
 
 
-        this.initalizeSettings(calendar.id);
+        this.initalizeSettings(calendar.id, calendar.summary);
     }
 
     getEvents = (calId, startTime, endTime) => {
@@ -49,9 +53,10 @@ class CalendarDetails extends Component {
         }).then(response => this.setState(prevState => updateObject(prevState, {events: response.result.items})));
     }
 
-    initalizeSettings = (id) => {
+    initalizeSettings = (id, name) => {
         const initalConfig = {
-            id: id
+            id: id,
+            name: name
         };
 
         if (localStorage.getItem(id) === null) {
@@ -65,6 +70,14 @@ class CalendarDetails extends Component {
 
     toggleEditable = () => {
         this.setState(prevState => updateObject(prevState, {editable: !prevState.editable}));
+
+        setTimeout(this.updateConfig, 100);
+    }
+
+    toggleVisibility = () => {
+        this.setState(prevState => updateObject(prevState, {hidden: !prevState.hidden}));
+
+        setTimeout(this.updateConfig, 100);
     }
 
     updateProps = (event) => {
@@ -102,10 +115,15 @@ class CalendarDetails extends Component {
                     />
                 );
             });
+        } else {
+            eventsList = "No events found";
         }
         return (
             <div className="Content_wrapper">
-                <PageHeader title="Calendar details" />
+                <div className="Calendar_header">
+                    <h2>{this.state.name}</h2>
+                    <Link to="/" className="Basic_button">⇦</Link>
+                </div>
                 <CalendarConfig 
                     total={eventsLength}
                     editable={this.state.editable}
@@ -113,6 +131,8 @@ class CalendarDetails extends Component {
                     tax={this.state.tax}
                     edit={this.toggleEditable}
                     update={this.updateProps}
+                    hidden={this.state.hidden}
+                    visible={this.toggleVisibility}
                 />
                 {eventsList}
                 <hr />

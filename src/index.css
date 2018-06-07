@@ -118,3 +118,20 @@ button {
   left: 50%;
   transition: all .2s ease-in-out;
 }
+
+.Calendar_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Calendar_header h2 {
+  font-size: calc(1.6rem + .8vmax);
+  margin-bottom: .3em;
+  max-width: 80%;
+  word-break: break-all;
+}
+
+.Calendar_header .Basic_button {
+  margin: 0;
+}

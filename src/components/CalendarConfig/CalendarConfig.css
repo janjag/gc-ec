@@ -1,9 +1,10 @@
 .Calendar_config {
     font-size: 1.6rem;
     line-height: 1.5;
-    padding-bottom: .5em;
+    padding: .5em 0;
+    border-top: .1rem solid var(--color1);
     border-bottom: .1rem solid var(--color1);
-    margin-bottom: 1em;
+    margin: 1em 0;
 }
 
 .Calendr_config_header {

@@ -1,0 +1,18 @@
+.Toggle {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.6rem;
+    color: var(--white);
+    fill: var(--white);
+    transition: color .2s ease-in-out;
+}
+
+.Toggle svg {
+    height: 1.2em;
+    margin-right: .25em;
+    opacity: .5;
+}
+
+.Toggle.Show  svg {
+    opacity: 1;
+}

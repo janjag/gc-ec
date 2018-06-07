@@ -45,6 +45,8 @@ class Calendars extends Component {
                         />
                 )
             } );
+        } else {
+            list = "No calendars found";
         }
         return (
             <div className="Content_wrapper">
