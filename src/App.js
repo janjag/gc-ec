@@ -6,11 +6,12 @@ import * as actionCreators from './store/actions';
 import { setColor } from './shared/helpers';
 
 import Aux from './hoc/Aux';
+import AsyncComponent from './hoc/AsyncComponent';
 import Auth from './containers/Auth/Auth';
-import Calendars from './containers/Calendars/Calendars';
-import CalendarDetails from './containers/CalendarDetails/CalendarDetails';
-import About from './components/About/About';
 
+const asyncCalendars = AsyncComponent( () => import('./containers/Calendars/Calendars'));
+const asyncCalendarDetails = AsyncComponent( () => import('./containers/CalendarDetails/CalendarDetails'));
+const asyncAbout = AsyncComponent( () => import('./components/About/About'));
 class App extends Component {
 
   componentDidMount = () => {
@@ -55,7 +56,7 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
-        <Route path="/about" component={About} />
+        <Route path="/about" component={asyncAbout} />
         <Route path="/login" component={Auth} />
         <Redirect to='/login' />
       </Switch>
@@ -63,9 +64,9 @@ class App extends Component {
     if(this.props.isAuth) {
       routes = (
         <Switch>
-          <Route path="/calendar/:id" component={CalendarDetails}/>
-          <Route path="/about" component={About} />
-          <Route path="/" exact component={Calendars} />
+          <Route path="/calendar/:id" component={asyncCalendarDetails}/>
+          <Route path="/about" component={asyncAbout} />
+          <Route path="/" exact component={asyncCalendars} />
           <Redirect to='/' />
         </Switch>
       );
