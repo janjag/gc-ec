@@ -1,6 +1,8 @@
 import React, { Component }  from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+import './CalendarDetails.css';
+
 import CalendarConfig from '../../components/CalendarConfig/CalendarConfig';
 import Loader from '../../components/UI/Loader/Loader';
 import Event from '../../components/Event/Event';
@@ -15,15 +17,22 @@ class CalendarDetails extends Component {
         hRate: 0,
         hidden: false,
         total: null,
-        editable: false
+        editable: false,
+        selcted: 0,
+        customDates: {
+            start: null,
+            end: null
+        },
+        showDatePicker: false
     };
 
     componentDidMount = () => {
-        this.fetchEvents();
+        this.fetchEvents(this.state.customDates.start, this.state.customDates.end);
     }
 
-    fetchEvents = () => {
-        // tStart, tEndtEnd
+    fetchEvents = (start, end) => {
+        let tStart = start || null;
+        let tEnd = end || null;
         const path = window.location.pathname.split('/');
         const localID = path[path.length -1];
         const calendar = JSON.parse(localStorage.getItem('calendars')).find(item => item.id.includes(localID));
@@ -32,11 +41,26 @@ class CalendarDetails extends Component {
             name: calendar.summary
         };
 
-        this.getEvents(calendar.id, null, null);
+        this.getEvents(calendar.id, tStart, tEnd);
         this.setState(updateObject(this.state, base));
 
 
         this.initalizeSettings(calendar.id, calendar.summary);
+    }
+
+    fetchCurrentEvents = () => {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), now.getMonth(), 1);
+
+        this.setState(prevState => {
+            updateObject(prevState, {
+                customDates: {
+                    start: start,
+                    end: now
+                }
+            })
+        });
+        this.fetchEvents(start, now);
     }
 
     getEvents = (calId, startTime, endTime) => {
@@ -119,6 +143,36 @@ class CalendarDetails extends Component {
         } else {
             eventsList = "No events found";
         }
+        const buttonList = [
+            {id: 0, name: "Last month", handler: () => this.fetchEvents(null, null)},
+            {id: 1, name: "Current month", handler: () => this.fetchCurrentEvents()},
+            {id: 2, name: "Choose dates", handler: () => this.fetchEvents(null, null)}
+        ];
+        let buttons = buttonList.map( button => {
+            let classList = "Calendar_timeframe_button";
+            if (button.id === this.state.selcted) {
+                classList += " Active";
+            }
+            return (
+                <button 
+                    key={button.id} 
+                    className={classList}
+                    onClick={button.handler}
+                    >
+                    {button.name}
+                </button>
+            );
+        });
+        let datePicker = null;
+        if(this.state.showDatePicker) {
+            datePicker = (
+                <div className="DatePicker">
+                    <input type="date" id="from" />
+                    <input type="date" id="to" />
+                    <button className="Basic_button">Choose</button>
+                </div>
+            );
+        }
         return (
             <div className="Content_wrapper">
                 <div className="Calendar_header">
@@ -135,6 +189,10 @@ class CalendarDetails extends Component {
                     hidden={this.state.hidden}
                     visible={this.toggleVisibility}
                 />
+                <div className="Calendar_timeframe_select">
+                    {buttons}
+                </div>
+                {datePicker}
                 {eventsList}
                 <hr />
                 <Link to="/" className="Basic_button">⇦ Back</Link>

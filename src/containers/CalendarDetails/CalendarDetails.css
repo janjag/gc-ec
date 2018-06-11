@@ -1,0 +1,21 @@
+.Calendar_timeframe_select {
+    display: flex;
+    margin-bottom: 0.3em;
+    width: 100%;
+}
+
+.Calendar_timeframe_button {
+    background-color: var(--white);
+    border-bottom: .1rem solid var(--white);
+    color: var(--color2);
+    flex-grow: 1;
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-align: center;
+    padding: .5em;
+    margin-right: .2rem;
+    width: calc((100% - .4rem) / 3);
+}
+.Calendar_timeframe_button:last-of-type {
+    margin-right: 0;
+}

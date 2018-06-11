@@ -4,8 +4,8 @@
     width: 100%;
     background-color: var(--white);
     color: var(--color2);
-    font-size: 1.4rem;
-    padding: 1.5em 1em;
+    font-size: 1.6rem;
+    padding: 1.25em 1em;
     border-left: .5em solid transparent;
 }
 .Calendar_box:not(:last-of-type) {
