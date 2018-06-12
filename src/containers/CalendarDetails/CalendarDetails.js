@@ -173,6 +173,8 @@ class CalendarDetails extends Component {
                 </button>
             );
         });
+
+        // 
         let datePicker = null;
         let pickedDates = null;
         if(this.state.selcted === 2) {
@@ -201,6 +203,7 @@ class CalendarDetails extends Component {
                 </div>
             );
         }
+        
         return (
             <div className="Content_wrapper">
                 <div className="Calendar_header">

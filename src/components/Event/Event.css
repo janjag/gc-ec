@@ -1,7 +1,7 @@
 .Event_box {
     width: 100%;
     background-color: var(--white);
-    color: var(--black);
+    color: var(--gray);
     font-size: 1.6rem;
     padding: .5em 1em;
     border-bottom: .1em solid var(--color1);
@@ -11,7 +11,16 @@
 }
 .Event_box_title {
     border-bottom: .1rem solid var(--color2);
+    color: var(--black);
     display: block;
     font-size: 1.6rem;
     margin-bottom: .25em;
+}
+.Event_icon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    width: 1em;
+    margin-right: 0.5em;
+    fill: var(--color2);
 }

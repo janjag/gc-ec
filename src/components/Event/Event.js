@@ -2,6 +2,8 @@ import React from 'react';
 
 import './Event.css';
 
+import { Clock } from '../UI/Icons/Icons';
+
 const Event = ( props ) => {
     let data = 'Full day event';
     if (props.length > 0) {
@@ -12,7 +14,7 @@ const Event = ( props ) => {
         <div className="Event_box">
             <p>
                 <i className="Event_box_title">{props.name}</i>
-                {data}
+                <Clock name={"Event_icon"} /> {data}
             </p>
         </div>
     );

@@ -46,6 +46,7 @@
     background-color: var(--white);
     border: 0;
     border-bottom: .1rem solid var(--color1);
+    border-radius: 0;
     color: var(--color2);
     display: block;
     font-size: 1.6rem;
