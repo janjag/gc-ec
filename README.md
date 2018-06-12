@@ -14,7 +14,7 @@ Assumptions:
 
 ---
 
-## Common problem
+## Current problem :disappointed:
 
 Some calendars settings are kept in local storage and cause problems after updating app. While i'm still looking for a solution for this problem currentle the only option is to manually clear local storage.
 
