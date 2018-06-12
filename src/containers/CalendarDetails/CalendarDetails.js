@@ -1,6 +1,8 @@
 import React, { Component }  from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Flatpickr from 'react-flatpickr';
 
+import '../../../node_modules/flatpickr/dist/flatpickr.css';
 import './CalendarDetails.css';
 
 import CalendarConfig from '../../components/CalendarConfig/CalendarConfig';
@@ -22,15 +24,14 @@ class CalendarDetails extends Component {
         customDates: {
             start: null,
             end: null
-        },
-        showDatePicker: false
+        }
     };
 
     componentDidMount = () => {
-        this.fetchEvents(this.state.customDates.start, this.state.customDates.end);
+        this.fetchEvents(this.state.customDates.start, this.state.customDates.end, 0);
     }
 
-    fetchEvents = (start, end) => {
+    fetchEvents = (start, end, index) => {
         let tStart = start || null;
         let tEnd = end || null;
         const path = window.location.pathname.split('/');
@@ -38,7 +39,8 @@ class CalendarDetails extends Component {
         const calendar = JSON.parse(localStorage.getItem('calendars')).find(item => item.id.includes(localID));
         const base = {
             id: calendar.id,
-            name: calendar.summary
+            name: calendar.summary,
+            selcted: index
         };
 
         this.getEvents(calendar.id, tStart, tEnd);
@@ -48,7 +50,7 @@ class CalendarDetails extends Component {
         this.initalizeSettings(calendar.id, calendar.summary);
     }
 
-    fetchCurrentEvents = () => {
+    fetchCurrentEvents = (index) => {
         const now = new Date();
         const start = new Date(now.getFullYear(), now.getMonth(), 1);
 
@@ -57,10 +59,11 @@ class CalendarDetails extends Component {
                 customDates: {
                     start: start,
                     end: now
-                }
+                },
+                selcted: index
             })
         });
-        this.fetchEvents(start, now);
+        this.fetchEvents(start, now, index);
     }
 
     getEvents = (calId, startTime, endTime) => {
@@ -104,6 +107,13 @@ class CalendarDetails extends Component {
 
         setTimeout(this.updateConfig, 100);
     }
+    
+    toggleDatePicker = (index) => {
+        this.setState(prevState => updateObject(prevState, {
+            events: [],
+            selcted: index
+        }));
+    }
 
     updateProps = (event) => {
         let name = event.target.name;
@@ -144,9 +154,9 @@ class CalendarDetails extends Component {
             eventsList = "No events found";
         }
         const buttonList = [
-            {id: 0, name: "Last month", handler: () => this.fetchEvents(null, null)},
-            {id: 1, name: "Current month", handler: () => this.fetchCurrentEvents()},
-            {id: 2, name: "Choose dates", handler: () => this.fetchEvents(null, null)}
+            {id: 0, name: "Last month", handler: () => this.fetchEvents(null, null, 0)},
+            {id: 1, name: "Current month", handler: () => this.fetchCurrentEvents(1)},
+            {id: 2, name: "Choose dates", handler: () => this.toggleDatePicker(2)}
         ];
         let buttons = buttonList.map( button => {
             let classList = "Calendar_timeframe_button";
@@ -164,12 +174,30 @@ class CalendarDetails extends Component {
             );
         });
         let datePicker = null;
-        if(this.state.showDatePicker) {
+        let pickedDates = null;
+        if(this.state.selcted === 2) {
             datePicker = (
                 <div className="DatePicker">
-                    <input type="date" id="from" />
-                    <input type="date" id="to" />
-                    <button className="Basic_button">Choose</button>
+                    <Flatpickr options={{
+                        disableMobile: true,
+                        mode: "range",
+                        locale: {
+                            firstDayOfWeek: 1
+                        }
+                        }}
+                        value={pickedDates}
+                        onChange={pickedDates => {
+                            this.setState(prevState => updateObject(prevState, {
+                                customDates: {
+                                    start: pickedDates[0],
+                                    end: pickedDates[1]
+                                }
+                            }));
+                        }}
+                    />
+                    <button className="Basic_button Load_dates"
+                        onClick={() => this.fetchEvents(this.state.customDates.start, this.state.customDates.end, 2)}
+                    >Choose</button>
                 </div>
             );
         }

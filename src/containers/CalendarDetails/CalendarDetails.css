@@ -1,6 +1,6 @@
 .Calendar_timeframe_select {
     display: flex;
-    margin-bottom: 0.3em;
+    margin-bottom: 1em;
     width: 100%;
 }
 
@@ -15,7 +15,65 @@
     padding: .5em;
     margin-right: .2rem;
     width: calc((100% - .4rem) / 3);
+    transition: color .2s linear, background-color .2s linear;
+    position: relative;
+    z-index: 2;
+}
+.Calendar_timeframe_button::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 99.5%;
+    left: 50%;
+    margin-left: -.5em;
+    border: .5em solid transparent;
+    border-top: .5em solid var(--white);
+    transform-origin: top center;
+    transform: scale(0);
+    transition: transform .2s linear;
+
 }
 .Calendar_timeframe_button:last-of-type {
     margin-right: 0;
+}
+
+.Calendar_timeframe_button.Active {
+    background-color: transparent;
+    color: var(--white);
+}
+.Calendar_timeframe_button.Active::after {
+    transform: scale(1);
+}
+
+.DatePicker {
+    width: 100%;
+    display: flex;
+    margin: -.5rem 0 1rem;
+}
+
+.DatePicker input {
+    border: 0;
+    background-color: var(--white);
+    color: var(--color2);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    flex-grow: 1;
+    padding: .2em .75em; 
+}
+
+.Load_dates {
+    margin: 0;
+    background-color: var(--color1);
+    color: var(--gray);
+    padding: .2em .75em;
+    text-transform: none;
+}
+
+.flatpickr-months .flatpickr-month {
+    color: var(--color2);
+}
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay {
+    background: var(--color1);
+    border-color: var(--color1);
 }
