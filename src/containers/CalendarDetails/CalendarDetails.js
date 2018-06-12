@@ -47,7 +47,7 @@ class CalendarDetails extends Component {
         this.setState(updateObject(this.state, base));
 
 
-        this.initalizeSettings(calendar.id, calendar.summary);
+        this.initalizeSettings(calendar.id, calendar.summary, index);
     }
 
     fetchCurrentEvents = (index) => {
@@ -81,10 +81,11 @@ class CalendarDetails extends Component {
         }).then(response => this.setState(prevState => updateObject(prevState, {events: response.result.items})));
     }
 
-    initalizeSettings = (id, name) => {
+    initalizeSettings = (id, name, index) => {
         const initalConfig = {
             id: id,
-            name: name
+            name: name,
+            selcted: index
         };
 
         if (localStorage.getItem(id) === null) {
@@ -92,7 +93,7 @@ class CalendarDetails extends Component {
         } else {
             let config = JSON.parse(localStorage.getItem(id));
 
-            this.setState(prevState => updateObject(prevState, config));
+            this.setState(prevState => updateObject(prevState, updateObject(config, {selcted: index})));
         }
     }
 

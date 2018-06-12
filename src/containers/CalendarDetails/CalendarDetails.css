@@ -5,7 +5,6 @@
 }
 
 .Calendar_timeframe_button {
-    background-color: var(--white);
     border-bottom: .1rem solid var(--white);
     color: var(--color2);
     flex-grow: 1;
@@ -18,6 +17,19 @@
     transition: color .2s linear, background-color .2s linear;
     position: relative;
     z-index: 2;
+}
+.Calendar_timeframe_button::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--white);
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform .2s ease-in-out;
 }
 .Calendar_timeframe_button::after {
     content: '';
@@ -36,7 +48,9 @@
 .Calendar_timeframe_button:last-of-type {
     margin-right: 0;
 }
-
+.Calendar_timeframe_button.Active::before {
+    transform: scaleY(0);
+}
 .Calendar_timeframe_button.Active {
     background-color: transparent;
     color: var(--white);
