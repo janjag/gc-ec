@@ -25,5 +25,5 @@ Some calendars settings are kept in local storage and cause problems after updat
 - ~~Add configuration to calendars~~
 - ~~Display list of events for selected calendar~~
 - ~~Add option to show events form selected dates range~~
-- Add sorting/filtering for events
+- ~~Add sorting/filtering for events~~
 - Add options panel and some more options

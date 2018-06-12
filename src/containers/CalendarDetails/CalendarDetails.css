@@ -59,13 +59,13 @@
     transform: scale(1);
 }
 
-.DatePicker {
+.Input_wrapper {
     width: 100%;
     display: flex;
     margin: -.5rem 0 1rem;
 }
 
-.DatePicker input {
+.Input_wrapper input {
     border: 0;
     border-radius: 0;
     background-color: var(--white);
@@ -75,6 +75,10 @@
     font-weight: 300;
     flex-grow: 1;
     padding: .2em .75em; 
+}
+
+.Input_wrapper label {
+    padding: .2em .75em .2em 0;
 }
 
 .Load_dates {

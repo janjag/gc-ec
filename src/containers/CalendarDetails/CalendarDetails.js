@@ -24,7 +24,8 @@ class CalendarDetails extends Component {
         customDates: {
             start: null,
             end: null
-        }
+        },
+        search: ''
     };
 
     componentDidMount = () => {
@@ -132,6 +133,15 @@ class CalendarDetails extends Component {
         localStorage.setItem(id, JSON.stringify(updateObject(ls, this.state)));
     }
 
+    // filterResults = (event) => {
+    //     this.updateProps(event);
+    //     const list = this.state.events.map(element => {
+    //         console.log(element.summary.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase()));
+            
+    //     });
+    //     this.setState(prevState => updateObject(prevState, {events: list}));
+    // }
+
     render () {
         let eventsLength = 0;
         let eventsList = <Loader />
@@ -139,6 +149,9 @@ class CalendarDetails extends Component {
             eventsList = this.state.events.map( event => {
                 // if event has specified color - it means that it overlaps with other event(s) and should be skipped
                 if(event.colorId) {
+                    return;
+                }
+                if(!event.summary.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase())) {
                     return;
                 }
                 const eventLength = Math.abs(new Date(event.end.dateTime).getTime() - new Date(event.start.dateTime).getTime()) / 60000 || 0;
@@ -180,7 +193,7 @@ class CalendarDetails extends Component {
         let pickedDates = null;
         if(this.state.selcted === 2) {
             datePicker = (
-                <div className="DatePicker">
+                <div className="Input_wrapper">
                     <Flatpickr options={{
                         disableMobile: true,
                         mode: "range",
@@ -204,7 +217,17 @@ class CalendarDetails extends Component {
                 </div>
             );
         }
-        
+        let searchBox = (
+            <div className="Input_wrapper">
+                <label>Search: </label>
+                <input 
+                    name="search"
+                    value={this.state.search}
+                    onChange={ (e) => this.updateProps(e)}
+                />
+            </div>
+        );
+
         return (
             <div className="Content_wrapper">
                 <div className="Calendar_header">
@@ -221,6 +244,7 @@ class CalendarDetails extends Component {
                     hidden={this.state.hidden}
                     visible={this.toggleVisibility}
                 />
+                {searchBox}
                 <div className="Calendar_timeframe_select">
                     {buttons}
                 </div>
