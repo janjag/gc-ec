@@ -44,7 +44,7 @@ const CalendarConfig = ( props ) => {
             <Toggle 
                 visible={props.visible}
                 hidden={props.hidden}
-            />
+            > claendar </Toggle>
             <div className="Calendr_config_header">
                 <p><i>Total:</i> {t}</p>
                 <button className="Edit_button Basic_button" onClick={props.edit}><Edit /></button>

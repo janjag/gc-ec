@@ -18,6 +18,8 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -26,6 +28,8 @@ body {
   font-size: 1.6rem;
   background-color: var(--white);
   color: var(--gray);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 button {

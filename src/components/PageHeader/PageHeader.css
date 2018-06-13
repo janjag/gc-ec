@@ -79,3 +79,67 @@
     height: 1.4rem;
     width: 1.4rem;
 }
+
+.Change_color_button {
+    display: block;
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    background: 
+        linear-gradient(
+            to bottom,
+            #00ffe6,
+            #027c6d
+        );
+    color: var(--white);
+}
+.Change_color_button:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+.Change_color_button.Blue {
+    background: 
+        linear-gradient(
+            to bottom,
+            #a1daf8,
+            #1e71ba
+        );
+}
+.Change_color_button.Red {
+    background: 
+        linear-gradient(
+            to bottom,
+            #ff3a3a,
+            #981212
+        );
+}
+
+.Label {
+    color: var(--gray);
+    display: block;
+    margin-top: 2em;
+    text-align: center;
+    width: 100%;
+}
+.Input {
+    background: transparent;
+    border: 0;
+    border-bottom: .1em solid var(--color1);
+    color: var(--color2);
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: .2em 0;
+    text-align: center;
+    width: 100%;
+}
+
+.Clear_localstorage {
+    background-color: var(--gray);
+    color: var(--color1);
+    display: block;
+    margin-top: auto;
+    padding: .5em .5em .75em;
+    text-align: center;
+    width: 100%;
+}

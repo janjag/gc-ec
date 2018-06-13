@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PageHeader from './../../components/PageHeader/PageHeader';
 import Loader from './../../components/UI/Loader/Loader';
 import Calendar from './../../components/Calendar/Calendar';
-import { Hidden } from '../../components/UI/Icons/Icons';
+import Toggle from '../../components/UI/Toggle/Toggle';
 
 import * as actionCreators from '../../store/actions/';
 
@@ -23,7 +23,7 @@ class Calendars extends Component {
     }
 
     render () {
-        let showBtnText = this.props.visible ? 'Hide calendars' : 'Show hidden calendars';
+        let showBtnText = this.props.visible ? 'calendars' : 'hidden calendars';
         let list = <Loader />;
         if ( this.props.cList ) {
             list = this.props.cList.map( calendar => {
@@ -51,12 +51,7 @@ class Calendars extends Component {
         return (
             <div className="Content_wrapper">
                 <PageHeader title="Yours Calendars" />
-                <button 
-                    className="Show_all Basic_button"
-                    onClick={this.showAllCalendars}
-                >
-                    <Hidden /> {showBtnText}
-                </button>
+                <Toggle visible={this.showAllCalendars} hidden={!this.props.visible}> {showBtnText} </Toggle>
                 {list}
             </div>
         );

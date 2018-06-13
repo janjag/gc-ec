@@ -25,7 +25,8 @@ class CalendarDetails extends Component {
             start: null,
             end: null
         },
-        search: ''
+        search: '',
+        currency: ''
     };
 
     componentDidMount = () => {

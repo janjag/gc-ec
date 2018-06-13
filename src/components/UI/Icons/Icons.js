@@ -2,8 +2,7 @@ import React from 'react';
 
 export const User = ({name, fill}) => {
     return (
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-        viewBox="0 0 512 512" fill={fill} className={name}>
+        <svg version="1.1" x="0px" y="0px" viewBox="0 0 512 512" fill={fill} className={name}>
             <g>
                 <path d="M320.044,55.872c0.619,5.867,4.971,8.619,7.552,10.261c4.309,2.731,14.4,9.131,14.4,40.533v64.021
                     c0,5.888,3.52,10.261,9.408,10.261c0.341,0.299,0.832,1.152,1.216,2.005c-0.491,9.899-5.376,25.067-8.448,33.429
@@ -34,7 +33,7 @@ export const User = ({name, fill}) => {
 
 export const Edit = ({name, fill}) => {
     return (
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" viewBox="0 0 275.836 275.836">
+        <svg version="1.1" x="0px" y="0px" viewBox="0 0 275.836 275.836" fill={fill} className={name}>
             <g>
                 <path d="M191.344,20.922l-95.155,95.155c-0.756,0.756-1.297,1.699-1.565,2.734l-8.167,31.454c-0.534,2.059,0.061,4.246,1.565,5.751
                     c1.14,1.139,2.671,1.757,4.242,1.757c0.503,0,1.009-0.063,1.508-0.192l31.454-8.168c1.035-0.269,1.979-0.81,2.734-1.565
@@ -52,7 +51,7 @@ export const Edit = ({name, fill}) => {
 
 export const Settings = ({name, fill}) => {
     return (
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="896.025px" height="896.025px" viewBox="0 0 896.025 896.025">
+        <svg version="1.1" x="0px" y="0px" width="896.025px" height="896.025px" viewBox="0 0 896.025 896.025" fill={fill} className={name}>
             <g>
                 <path id="settings_1_" d="M863.24,382.771l-88.759-14.807c-6.451-26.374-15.857-51.585-28.107-75.099l56.821-70.452
                     c12.085-14.889,11.536-36.312-1.205-50.682l-35.301-39.729c-12.796-14.355-34.016-17.391-50.202-7.165l-75.906,47.716
@@ -75,7 +74,7 @@ export const Settings = ({name, fill}) => {
 
 export const Refresh = ({name, fill}) => {
     return (
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 491.236 491.236">
+        <svg version="1.1" x="0px" y="0px" viewBox="0 0 491.236 491.236" fill={fill} className={name}>
             <g>
                 <path d="M55.89,262.818c-3-26-0.5-51.1,6.3-74.3c22.6-77.1,93.5-133.8,177.6-134.8v-50.4c0-2.8,3.5-4.3,5.8-2.6l103.7,76.2
                     c1.7,1.3,1.7,3.9,0,5.1l-103.6,76.2c-2.4,1.7-5.8,0.2-5.8-2.6v-50.3c-55.3,0.9-102.5,35-122.8,83.2c-7.7,18.2-11.6,38.3-10.5,59.4
@@ -91,7 +90,7 @@ export const Refresh = ({name, fill}) => {
 
 export const Filter = ({name, fill}) => {
     return (
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 247.46 247.46">
+        <svg version="1.1" x="0px" y="0px" viewBox="0 0 247.46 247.46" fill={fill} className={name}>
             <path d="M246.744,13.984c-1.238-2.626-3.881-4.301-6.784-4.301H7.5c-2.903,0-5.545,1.675-6.784,4.301
                 c-1.238,2.626-0.85,5.73,0.997,7.97l89.361,108.384v99.94c0,2.595,1.341,5.005,3.545,6.373c1.208,0.749,2.579,1.127,3.955,1.127
                 c1.137,0,2.278-0.259,3.33-0.78l50.208-24.885c2.551-1.264,4.165-3.863,4.169-6.71l0.098-75.062l89.366-108.388
@@ -101,9 +100,9 @@ export const Filter = ({name, fill}) => {
     );
 }
 
-export const Hidden = () => {
+export const Hidden = ({name, fill}) => {
     return (
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512.001 512.001">
+        <svg version="1.1" x="0px" y="0px" viewBox="0 0 512.001 512.001" fill={fill} className={name}>
             <g>
                 <g>
                     <path d="M316.332,195.662c-4.16-4.16-10.923-4.16-15.083,0c-4.16,4.16-4.16,10.944,0,15.083
@@ -149,9 +148,9 @@ export const Hidden = () => {
     )
 }
 
-export const Clock = props => {
+export const Clock = ({name, fill}) => {
     return (
-        <svg version="1.1" className={props.name} x="0px" y="0px" viewBox="0 0 469.333 469.333">
+        <svg version="1.1"  fill={fill} className={name} x="0px" y="0px" viewBox="0 0 469.333 469.333">
             <g>
                 <path d="M403.233,229.374c1.272-9.288,2.1-18.199,2.1-26.707C405.333,90.917,314.417,0,202.667,0S0,90.917,0,202.667
                     s90.917,202.667,202.667,202.667c8.557,0,17.462-0.823,26.707-2.102c21.854,39.372,63.824,66.102,111.96,66.102

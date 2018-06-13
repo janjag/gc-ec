@@ -8,7 +8,7 @@ const Toggle = ( props ) => {
     
     return (
         <button className={"Toggle " + text} onClick={props.visible}>
-            <Hidden /> {text} calendar
+            <Hidden /> {text} {props.children}
         </button>
     );
 }
