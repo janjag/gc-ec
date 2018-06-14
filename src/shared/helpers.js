@@ -43,7 +43,7 @@ export const toggleSidePanel = () => {
 
 export const setAppCurrency = event => {
     event.stopPropagation();
-    localStorage.setItem('appCurrency', event.target.value);
+    localStorage.setItem('appCurrency', event.target.value.toLocaleUpperCase());
 }
 
 export const clearLocalstorage = event => {

@@ -35,7 +35,7 @@
 
 .Config_field {
     border: 0;
-    width: calc(50% - .5em);
+    width: calc((100% - .6em) / 3);
 }
 .Config_field label {
     display: block;

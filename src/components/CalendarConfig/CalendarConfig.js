@@ -22,6 +22,10 @@ const CalendarConfig = ( props ) => {
                         <label htmlFor="tax">Tax (%)</label>
                         <input type="number" name="tax" max="100" min="0" value={props.tax} onChange={props.update}/>
                     </fieldset>
+                    <fieldset className="Config_field">
+                        <label htmlFor="localCurrency">Currency</label>
+                        <input type="text" name="localCurrency" value={props.currency} onChange={props.update}/>
+                    </fieldset>
                 </form>
             </Aux>
         );
@@ -33,9 +37,9 @@ const CalendarConfig = ( props ) => {
     if (props.hRate > 0) {
         computed = (
             <div className="Calendar_config_computed">
-                <p><b>{((props.total / 60) * props.hRate).toFixed(2)} PLN</b> <i>brutto</i> / 
-                Tax: {(((props.total / 60) * props.hRate) * (props.tax / 100)).toFixed(2)} PLN </p>
-                <p><b>{(((props.total / 60) * props.hRate) - (((props.total / 60) * props.hRate) * (props.tax / 100))).toFixed(2)} PLN</b> <i>netto</i></p>
+                <p><b>{((props.total / 60) * props.hRate).toFixed(2)} {props.currency}</b> <i>brutto</i> / 
+                Tax: {(((props.total / 60) * props.hRate) * (props.tax / 100)).toFixed(2)} {props.currency} </p>
+                <p><b>{(((props.total / 60) * props.hRate) - (((props.total / 60) * props.hRate) * (props.tax / 100))).toFixed(2)} {props.currency}</b> <i>netto</i></p>
             </div>
         );
     }

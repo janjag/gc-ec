@@ -26,7 +26,7 @@ class CalendarDetails extends Component {
             end: null
         },
         search: '',
-        currency: ''
+        localCurrency: ''
     };
 
     componentDidMount = () => {
@@ -46,7 +46,7 @@ class CalendarDetails extends Component {
         };
 
         this.getEvents(calendar.id, tStart, tEnd);
-        this.setState(updateObject(this.state, base));
+        this.setState(prevState => updateObject(prevState, base));
 
 
         this.initalizeSettings(calendar.id, calendar.summary, index);
@@ -87,11 +87,13 @@ class CalendarDetails extends Component {
         const initalConfig = {
             id: id,
             name: name,
-            selcted: index
+            selcted: index,
+            localCurrency: localStorage.getItem('appCurrency') || ''
         };
 
         if (localStorage.getItem(id) === null) {
             localStorage.setItem(id, JSON.stringify(initalConfig));
+            this.setState(prevState => updateObject(prevState, initalConfig));
         } else {
             let config = JSON.parse(localStorage.getItem(id));
 
@@ -133,15 +135,6 @@ class CalendarDetails extends Component {
 
         localStorage.setItem(id, JSON.stringify(updateObject(ls, this.state)));
     }
-
-    // filterResults = (event) => {
-    //     this.updateProps(event);
-    //     const list = this.state.events.map(element => {
-    //         console.log(element.summary.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase()));
-            
-    //     });
-    //     this.setState(prevState => updateObject(prevState, {events: list}));
-    // }
 
     render () {
         let eventsLength = 0;
@@ -244,6 +237,7 @@ class CalendarDetails extends Component {
                     update={this.updateProps}
                     hidden={this.state.hidden}
                     visible={this.toggleVisibility}
+                    currency={this.state.localCurrency}
                 />
                 {searchBox}
                 <div className="Calendar_timeframe_select">
