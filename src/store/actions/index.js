@@ -3,5 +3,6 @@ export {
     logOut,
     showAllCalendars,
     hideCalendars,
-    getCalendars
+    getCalendars,
+    setAppCurrency
 } from './actionsCreators'

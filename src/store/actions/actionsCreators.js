@@ -44,3 +44,11 @@ export const getCalendars = () => {
         });
     }
 }
+
+export const setAppCurrency = () => {
+    const cr = localStorage.getItem('appCurrency') || '';
+    return {
+        type: actionType.SET_APP_CURRENCY,
+        appCurrency: cr
+    }
+}

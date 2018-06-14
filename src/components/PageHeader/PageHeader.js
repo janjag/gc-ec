@@ -20,9 +20,9 @@ const PageHeader = ( props ) => {
                 <button className="Change_color_button Red" onClick={ev => helper.changeColor(ev, 'red')}>More red!</button>
 
                 <label className="Label" htmlFor="appCurrency">Set app currency</label>
-                <input className="Input" id="appCurrency" 
+                <input className="Input" id="appCurrency" value={props.cr}
                     onClick={event=> event.stopPropagation()} 
-                    onChange={event => helper.setAppCurrency(event)}/>
+                    onChange={props.handleCrChange}/>
 
                 <button className="Clear_localstorage" onClick={helper.clearLocalstorage}>Clear local storage</button>
             </SidePanel>

@@ -4,6 +4,7 @@ import { updateObject } from '../../shared/helpers';
 const initialState = {
     showAll: false,
     signedIn: false,
+    appCurrency: '',
     calendarsList: []
 }
 
@@ -20,6 +21,7 @@ const appReducer = (state = initialState, action) => {
         case actionType.SHOW_ALL_CALENDARS: return updateObject(state, {showAll: true});
         case actionType.HIDE_CALENDARS: return updateObject(state, {showAll: false});
         case actionType.SAVE_CALENDARS: return saveCalendars(state, action);
+        case actionType.SET_APP_CURRENCY: return updateObject(state, {appCurrency: action.appCurrency});
         default: return state;
     }
 }

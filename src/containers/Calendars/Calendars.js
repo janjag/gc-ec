@@ -11,6 +11,7 @@ import * as actionCreators from '../../store/actions/';
 class Calendars extends Component {
 
     componentDidMount = () => {
+        this.props.setCr();
         this.props.getCalendars();
     }
 
@@ -20,6 +21,13 @@ class Calendars extends Component {
             return;
         } 
         this.props.hide();
+    }
+
+
+    setAppCurrency = event => {
+        event.stopPropagation();
+        localStorage.setItem('appCurrency', event.target.value.toLocaleUpperCase());
+        this.props.setCr();
     }
 
     render () {
@@ -50,7 +58,7 @@ class Calendars extends Component {
         }
         return (
             <div className="Content_wrapper">
-                <PageHeader title="Yours Calendars" />
+                <PageHeader title="Yours Calendars" cr={this.props.appCr} handleCrChange={ev => this.setAppCurrency(ev)}/>
                 <Toggle visible={this.showAllCalendars} hidden={!this.props.visible}> {showBtnText} </Toggle>
                 {list}
             </div>
@@ -62,7 +70,8 @@ const mapStateToProps = state => {
   return {
     visible: state.showAll,
     isAuth: state.signedIn,
-    cList: state.calendarsList
+    cList: state.calendarsList,
+    appCr: state.appCurrency
   };
 };
   
@@ -70,7 +79,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getCalendars: () => dispatch(actionCreators.getCalendars()),
         showAll: () => dispatch(actionCreators.showAllCalendars()),
-        hide: () => dispatch(actionCreators.hideCalendars())
+        hide: () => dispatch(actionCreators.hideCalendars()),
+        setCr: () => dispatch(actionCreators.setAppCurrency())
     };
 };
 
