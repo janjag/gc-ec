@@ -29,9 +29,7 @@ class CalendarDetails extends Component {
         localCurrency: ''
     };
 
-    componentDidMount = () => {
-        this.fetchEvents(this.state.customDates.start, this.state.customDates.end, 0);
-    }
+    componentDidMount = () => this.fetchEvents(this.state.customDates.start, this.state.customDates.end, 0);
 
     fetchEvents = (start, end, index) => {
         let tStart = start || null;
@@ -101,17 +99,9 @@ class CalendarDetails extends Component {
         }
     }
 
-    toggleEditable = () => {
-        this.setState(prevState => updateObject(prevState, {editable: !prevState.editable}));
+    toggleEditable = () => this.setState(prevState => updateObject(prevState, {editable: !prevState.editable}), this.updateConfig);
 
-        setTimeout(this.updateConfig, 100);
-    }
-
-    toggleVisibility = () => {
-        this.setState(prevState => updateObject(prevState, {hidden: !prevState.hidden}));
-
-        setTimeout(this.updateConfig, 100);
-    }
+    toggleVisibility = () => this.setState(prevState => updateObject(prevState, {hidden: !prevState.hidden}), this.updateConfig);
     
     toggleDatePicker = (index) => {
         this.setState(prevState => updateObject(prevState, {
@@ -124,9 +114,7 @@ class CalendarDetails extends Component {
         let name = event.target.name;
         let value = event.target.value;
         let update = {[name]: value};
-        this.setState(prevState => updateObject(prevState, update));
-
-        setTimeout(this.updateConfig, 100);
+        this.setState(prevState => updateObject(prevState, update), this.updateConfig);
     }
 
     updateConfig = () => {
