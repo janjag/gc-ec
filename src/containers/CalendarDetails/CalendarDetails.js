@@ -143,6 +143,8 @@ class CalendarDetails extends Component {
                         key={event.id}
                         name={event.summary}
                         length={eventLength}
+                        start={event.start.dateTime}
+                        end={event.end.dateTime}
                     />
                 );
             });
