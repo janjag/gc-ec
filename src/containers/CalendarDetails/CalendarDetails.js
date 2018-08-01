@@ -69,8 +69,8 @@ class CalendarDetails extends Component {
     getEvents = (calId, startTime, endTime) => {
         const now = new Date();
         const firstDayPrevMonth = startTime || new Date(now.getFullYear(), now.getMonth() - 1, 1);
-        const prevMonthLastDate = endTime || new Date(now.getFullYear(), now.getMonth() -1, 31);
-
+        const prevMonthLastDate = endTime || new Date(now.getFullYear(), now.getMonth(), 1);
+        console.log(firstDayPrevMonth, prevMonthLastDate);
         window.gapi.client.calendar.events.list({
             calendarId: calId,
             timeMin: firstDayPrevMonth.toISOString(),
