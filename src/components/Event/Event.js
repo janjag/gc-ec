@@ -8,7 +8,7 @@ const Event = ( props ) => {
     let data = 'Full day event';
     let start = new Date(props.start).toString();
     let end = new Date(props.end).toString();
-    console.log(props, typeof(start), end)
+    // console.log(props, typeof(start), end)
     if (props.length > 0) {
         data = `${props.length} min / ${props.length / 60} h`;
     }
